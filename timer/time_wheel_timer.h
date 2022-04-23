@@ -1,3 +1,6 @@
+#ifndef _TIMEWHEELTIMER_H_
+#define _TIMEWHEELTIMER_H_
+
 #include<time.h>
 #include<netinet/in.h>
 #include<stdio.h>
@@ -168,3 +171,5 @@ private:
     tw_timer* slots[N];
     int cur_slot;   /*时间轮当前槽*/
 };
+
+#endif

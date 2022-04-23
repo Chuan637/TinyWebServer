@@ -1,3 +1,6 @@
+#ifndef _TIMEHEAPTIMER_H_
+#define _TIMEHEAPTIMER_H_
+
 #include<iostream>
 #include<netinet/in.h>
 #include<time.h>
@@ -217,3 +220,5 @@ private:
     int capacity;   /*堆数组容量*/
     int cur_size;   /*堆数组当前包含元素个数*/
 };
+
+#endif

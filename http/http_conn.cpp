@@ -97,8 +97,8 @@ void http_conn::init()
     m_read_idx = 0;
     m_write_idx = 0;
 
-    memset(m_read_buf, '\0', READ_m_read_buf_SIZE);
-    memset(m_write_buf, '\0', WRITE_m_read_buf_SIZE);
+    memset(m_read_buf, '\0', READ_BUFFER_SIZE);
+    memset(m_write_buf, '\0', WRITE_BUFFER_SIZE);
     memset(m_real_file, '\0', FILENAME_LEN);
 }
 
@@ -224,7 +224,7 @@ http_conn::HTTP_CODE http_conn::parse_request_line(char* text)
     {
         m_url += 7;
         /*strchr函数 从字符串1中寻找字符2第一次出现的位置。*/
-        m_url = strchr(url, '/');
+        m_url = strchr(m_url, '/');
     }
     if(!m_url || m_url[0] != '/')
     {

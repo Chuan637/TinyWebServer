@@ -13,7 +13,7 @@
 
 #include"lock/myLock.h"
 #include"threadpool/threadpool.h"
-#include<http/http_conn.h>
+#include"http/http_conn.h"
 
 using namespace std;
 
@@ -134,7 +134,7 @@ int main(int argc, char* argv[])
             else if(events[i].events & EPOLLIN)
             {
                 /*根据读的结果 决定是将任务添加到线程池 还是关闭连接*/
-                if(users[sockfd].read())
+                if(users[sockfd].read_once())
                 {
                     pool->append(users + sockfd);
                 }
@@ -146,9 +146,9 @@ int main(int argc, char* argv[])
             else if(events[i].events & EPOLLOUT)
             {
                 /*根据写的结果 决定是否关闭连接*/
-                if(!users[connfd].write())
+                if(!users[sockfd].write())
                 {
-                    users[connfd].close_conn;
+                    users[sockfd].close_conn();
                 }
             }
             else

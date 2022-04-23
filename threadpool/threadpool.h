@@ -1,10 +1,13 @@
+#ifndef _THREADPOOL_H_
+#define _THREADPOOL_H_
+
 #include <iostream>
 #include <list>
 #include <exception>
 #include <pthread.h>
 #include "../lock/myLock.h"
 
-/*线程池类 定义为模板为了方便复用*/
+/*线程池类 定义为模板为了方便复用 T是任务类*/
 template<typename T>
 class threadpool {
 public:
@@ -114,3 +117,5 @@ void threadpool<T>::run()
         request->process();
     }
 }
+
+#endif

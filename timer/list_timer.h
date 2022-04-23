@@ -1,3 +1,6 @@
+#ifndef _LISTTIMER_H_
+#define _LISTTIMER_H_
+
 #include<time.h>
 #define BUFFER_SIZE 64
 class util_timer;
@@ -184,3 +187,5 @@ private:
     util_timer* head;
     util_timer* tail;
 };
+
+#endif

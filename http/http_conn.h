@@ -1,3 +1,6 @@
+#ifndef _HTTPCONN_H_
+#define _HTTPCONN_H_
+
 #include<iostream>
 #include<unistd.h>
 #include<signal.h>
@@ -77,7 +80,7 @@ public:
 
 public:
     //初始化套接字地址，函数内部会调用私有方法init
-    void init(int sockfd, const sockaddr_in& addr, char*, int, int, std::string user, std::string passwd, std::string sqlname);
+    void init(int sockfd, const struct sockaddr_in& addr);
     //关闭http连接
     void close_conn(bool real_close = true);
     /*处理客户请求*/
@@ -118,7 +121,6 @@ private:
     bool add_content(const char *content);
     bool add_status_line(int status, const char *title);
     bool add_headers(int content_length);
-    bool add_content_type();
     bool add_content_length(int content_length);
     bool add_linger();
     bool add_blank_line();
@@ -173,3 +175,5 @@ private:
     struct iovec m_iv[2];
     int m_iv_count;
 };
+
+#endif
